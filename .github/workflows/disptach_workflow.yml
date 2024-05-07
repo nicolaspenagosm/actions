@@ -1,4 +1,4 @@
-name: Repository Dispatch Workflow
+name: disptach_workflow
 
 on:
   repository_dispatch:
