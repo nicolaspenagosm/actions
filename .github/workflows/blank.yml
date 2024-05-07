@@ -1,0 +1,31 @@
+name: Repository Dispatch Workflow
+
+on:
+  repository_dispatch:
+    types: [my_event]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Print event information
+        env:
+          EVENT_TYPE: ${{ github.event.action }}
+          CLIENT_PAYLOAD: ${{ toJson(github.event.client_payload) }}
+        run: |
+          echo "Event Type: $EVENT_TYPE"
+          echo "Client Payload: $CLIENT_PAYLOAD"
+
+      - name: Run if condition is true
+        if: ${{ github.event.client_payload.run_job }}
+        run: |
+            echo "The condition is true. Executing the job..."
+            # Here you can add the specific steps of your job
+
+      - name: Run if condition is false
+        if: ${{ !github.event.client_payload.run_job }}
+        run: |
+            echo "The condition is false. Skipping the job."
