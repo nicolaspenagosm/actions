@@ -1,22 +1,13 @@
-name: disptach_workflow
-
+name: Ping
 env:
-  owner: nicolaspenagosm
-  repo: actions
-  
+  REPO_OWNER: meroware
+  REPO_NAME: example-event-dispatcher-workflows
 on:
   repository_dispatch:
-    types: [my_event]
-
+    types: [run-ping]
 jobs:
-  build:
+  ping:
     runs-on: ubuntu-latest
-
     steps:
-     
       - name: Test
-        run: |
-            echo "Executing the job..."
-            # Here you can add the specific steps of your job
-
-    
+        run: echo "Test"
