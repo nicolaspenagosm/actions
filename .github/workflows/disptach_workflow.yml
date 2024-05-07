@@ -1,8 +1,8 @@
 name: disptach_workflow
 
 env:
-  REPO_OWNER: nicolaspenagosm
-  REPO_NAME: actions
+  owner: nicolaspenagosm
+  repo: actions
   
 on:
   repository_dispatch:
